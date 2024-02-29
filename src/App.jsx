@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import './App.css'
 import Container from './Container';
+import { signal } from '@preact/signals-react';
+
+const counter = signal(0);
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  // const [counter, setCounter] = useState(0);
 
   console.log("RENDER APP");
 
   function handleCounter(operator) {
     if (operator === "+") {
-      setCounter((count) => count + 1);
+      counter.value = counter.value + 1;
     } else if (operator === "-") {
-      setCounter((count) => count - 1);
+      counter.value = counter.value - 1;
     }
   }
 
